@@ -78,6 +78,7 @@ public static class Processor
 
         return counts
             .OrderByDescending(item => item.Value)
+            .ThenBy(item => item.Key)
             .First()
             .Key;
     }

@@ -17,25 +17,25 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '10.0.x'
+        dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore lab1.csproj
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build lab1.csproj --no-restore --configuration Release
 
     - name: Run Program
       run: |
-        cp commands.txt "bin/Release/net10.0/" || true
-        cp sequences.txt "bin/Release/net10.0/" || true
-        dotnet run --no-build --configuration Release
+        cp commands.txt "bin/Release/net8.0/" || true
+        cp sequences.txt "bin/Release/net8.0/" || true
+        dotnet run --project lab1.csproj --no-build --configuration Release
 
     - name: Check result file
       run: |
-        if [ -f "bin/Release/net10.0/genedata.txt" ]; then
+        if [ -f "bin/Release/net8.0/genedata.txt" ]; then
           echo "✅ genedata.txt создан"
-          head -n 15 "bin/Release/net10.0/genedata.txt"
+          head -n 15 "bin/Release/net8.0/genedata.txt"
         else
           echo "❌ genedata.txt НЕ создан"
           exit 1
@@ -45,4 +45,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: genedata-result
-        path: bin/Release/net10.0/genedata.txt
+        path: bin/Release/net8.0/genedata.txt
