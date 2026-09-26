@@ -57,30 +57,4 @@ public static class GeneticCodec
 
         return result.ToString();
     }
-
-    public static string Encode(string value)
-    {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < value.Length;)
-        {
-            int count = 1;
-            while (i + count < value.Length && value[i] == value[i + count])
-                count++;
-
-            while (count > 9)
-            {
-                result.Append(9).Append(value[i]);
-                count -= 9;
-            }
-
-            if (count >= 3)
-            result.Append(count);
-            result.Append(value[i]);
-
-            i += count;
-        }
-
-        return result.ToString();
-    }
 }
