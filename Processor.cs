@@ -3,7 +3,7 @@
 public static class Processor
 {
     private const string Separator =
-        "__________________________________________________________________________";
+        "--------------------------------------------------------------------------";
 
     public static void ExecuteCommands(
         string commandsPath,
