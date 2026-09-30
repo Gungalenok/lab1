@@ -61,7 +61,8 @@ public static class Processor
         List<GeneticData> data,
         string proteinName)
     {
-        return data.FirstOrDefault(p => p.ProteinName == proteinName);
+        int index = data.FindIndex(p => p.ProteinName == proteinName);
+        return index >= 0 ? data[index] : null;
     }
 
     public static char Mode(GeneticData data)
