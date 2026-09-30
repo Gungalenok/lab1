@@ -57,4 +57,5 @@ public static class GeneticCodec
 
         return result.ToString();
     }
+
 }
